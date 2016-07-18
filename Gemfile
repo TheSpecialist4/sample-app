@@ -8,6 +8,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails'
 end
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
