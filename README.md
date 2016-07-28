@@ -1,24 +1,5 @@
-# README
+# Sample App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Inspired from the ruby on rails tutorial book.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The deployed version of the app can be found at https://salty-refuge-41168.herokuapp.com/
