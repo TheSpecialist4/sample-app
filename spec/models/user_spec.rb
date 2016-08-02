@@ -20,7 +20,6 @@ RSpec.describe User, type: :model do
 
   it { expect(subject).to respond_to(:password_digest) }
   it { expect(subject).to respond_to(:password) }
-  it { expect(subject).to respond_to(:password_digest) }
 
   describe "When password is empty" do
   	before { @user.password = @user.password_confirmation = " " }

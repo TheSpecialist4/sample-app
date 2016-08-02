@@ -41,6 +41,8 @@ gem 'jbuilder', '~> 2.5'
 
 group :test do
 	gem 'capybara'
+	# to generate objects instead of Active record
+	gem 'factory_girl_rails'
 end
 
 group :production do

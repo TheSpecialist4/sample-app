@@ -1,14 +1,22 @@
 class UsersController < ApplicationController
+  # renders the signup form, using the new file in view/users/new
   def new
+    @user = User.new
   end
 
-  #strong params not from book
+  def show
+  	@user = User.find_by_id(params[:id])
+  end
+
+  # creates new user from form's params
   def create
   	@user = User.new(user_params)
+    #@user = User.new(params[:user])
   	if @user.save
-  		redirect_to @user, notice: 'User was successfully created.'
+      flash[:success] = "Welcome to Sample App!"
+  		redirect_to @user
   	else
-  		render action: 'new'
+  		render 'new'
   	end
   end
 
