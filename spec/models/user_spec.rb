@@ -21,6 +21,8 @@ RSpec.describe User, type: :model do
   it { expect(subject).to respond_to(:password_digest) }
   it { expect(subject).to respond_to(:password) }
 
+  it { expect(subject).to respond_to(:remember_token) }
+
   describe "When password is empty" do
   	before { @user.password = @user.password_confirmation = " " }
   	it { expect(subject).not_to be_valid }
@@ -64,5 +66,11 @@ RSpec.describe User, type: :model do
 	  	expect(subject).not_to be_valid
 	  end
 	end
+
+  # TODO: remember token tests, currently not working
+  #describe "remember token" do
+  #  before {@user.save}
+  #  expect(@user[:remember_token]).not_to be_empty
+  #end
 
 end
