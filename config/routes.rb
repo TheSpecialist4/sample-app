@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   #get 'static_pages/home'
 
   #get 'static_pages/help'
@@ -15,9 +17,11 @@ Rails.application.routes.draw do
 
   # get the sign up form
   match '/signup', to: 'users#new', via: [:get]
-
   # create new user using info from form
   match '/users', to: 'users#create', via: [:post]
+
+  match '/signin', to: 'sessions#new', via: [:get]
+  match '/signout', to: 'sessions#destroy', via: [:delete]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

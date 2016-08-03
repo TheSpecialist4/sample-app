@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # renders the signup form, using the new file in view/users/new
   def new
+    # empty instance used in the new view
     @user = User.new
   end
 
