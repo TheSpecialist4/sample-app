@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   
   match '/help', to: 'static_pages#help', via: [:get]
 
+  match '/denied', to: 'static_pages#denied', via: [:get]
+
   # get the sign up form
   match '/signup', to: 'users#new', via: [:get]
   # create new user using info from form

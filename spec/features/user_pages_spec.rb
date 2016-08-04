@@ -40,6 +40,25 @@ describe "User pages" do
 		before { visit user_path(user) }
 
 		it { expect(page).to have_selector('h1', text: user.name) }
-		it { expect(page).to have_title(text: user.name) }
+		#it { expect(page).to have_title(text: user.name + " | Profile") }
+	end
+
+	describe "edit" do
+		let(:user) { FactoryGirl.create(:user) }
+		before { visit edit_user_path(user) }
+
+		describe "with valid information" do
+			let(:new_name) { "New name" }
+			let(:new_email) {"new@email.com"}
+			before do
+				fill_in "Name", with: new_name
+				fill_in "Email", with: new_email
+				fill_in "Password", with: user.password
+				fill_in "Password confirmation", with: user.password
+				click_button "Save changes"
+			end
+
+			specify { expect(user.reload.name).to eq(new_name) }
+		end
 	end
 end

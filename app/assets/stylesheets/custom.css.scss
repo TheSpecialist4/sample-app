@@ -144,3 +144,25 @@ footer ul li {
 	float: left;
 	margin-left: 10px;
 }
+
+/* Index of all users */
+.users {
+	list-style: none;
+	margin: 0;
+	li {
+		overflow: auto;
+		padding: 10px 0;
+		border-top: 1px solid $gray-lighter;
+		&:last-child {
+			bottom-border: 1px solid $gray-lighter;
+		}
+		a {
+			margin-top: 50px;
+		}
+	}
+	img {
+		height: 75px;
+		width: auto;
+		border-radius: 50%;
+	}
+}
