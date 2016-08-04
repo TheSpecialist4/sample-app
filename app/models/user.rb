@@ -18,6 +18,9 @@ class User < ApplicationRecord
 	# has built in authenticate function to authenticate user with
 	# supplied password
 	has_secure_password
+	# one user has many microposts which are destroyed
+	# when the user is destroyed
+	has_many :microposts, dependent: :destroy
 
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
@@ -26,6 +29,10 @@ class User < ApplicationRecord
 	validates :email, presence: true, uniqueness: { case_sensitive: false}
 	validates :password, presence: true, length: {minimum: 6}
 	validates :password_confirmation, presence: true
+
+	def feed
+		microposts
+	end
 
 	private
 		def create_remember_token

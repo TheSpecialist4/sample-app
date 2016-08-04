@@ -29,6 +29,7 @@ RSpec.describe User, type: :model do
   end
 
   it { expect(subject).to respond_to(:authenticate) }
+  it { expect(subject).to respond_to(:microposts) }
 
   describe "return value of authenticate function" do
   	before { @user.save }
@@ -66,6 +67,20 @@ RSpec.describe User, type: :model do
 	  	expect(subject).not_to be_valid
 	  end
 	end
+
+  describe "microposts association" do
+    before {@user.save}
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have right order in microposts" do
+      expect(@user.microposts.reverse).to eq([newer_micropost, older_micropost])
+    end
+  end
 
   # TODO: remember token tests, currently not working
   #describe "remember token" do

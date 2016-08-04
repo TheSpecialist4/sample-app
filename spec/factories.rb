@@ -4,9 +4,14 @@ FactoryGirl.define do
 
 	# :user tells Factory girl to create a User resource
 	factory :user do
-		name "Naruto Uzumaki"
-		email "naruto@rasengan.com"
+		sequence(:name) { |n| "User #{n}" }
+		sequence(:email) { |n| "user#{n}@email.com" }
 		password "foobar"
 		password_confirmation "foobar"
+	end
+
+	factory :micropost do
+		content "sfkjh adkjh"
+		user
 	end
 end

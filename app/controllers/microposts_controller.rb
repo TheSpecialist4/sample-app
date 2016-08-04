@@ -1,0 +1,23 @@
+class MicropostsController < ApplicationController
+	#since no actions specified, applies to all
+	before_filter :get_signed_in_user
+
+	def create
+		@micropost = current_user.microposts.build(micropost_params)
+		if @micropost.save
+			flash[:success] = "Tweeted!"
+			redirect_to root_path
+		else
+			render 'static_pages/home'
+		end
+	end
+
+	def destroy
+		
+	end
+
+	private
+		def micropost_params
+			params.require(:micropost).permit(:content)
+		end
+end

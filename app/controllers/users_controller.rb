@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find_by_id(params[:id])
+    @microposts = @user.microposts.paginate page: params[:page]
   end
 
   # creates new user from form's params
@@ -40,12 +41,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     # update_attributes(params[:user]) not working
-    if @user.update_attributes(
-              name: params[:user][:name],
-              email: params[:user][:email],
-              password: params[:user][:password],
-              password_confirmation: params[:user][:password_confirmation]
-              )
+    if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
@@ -75,10 +71,10 @@ class UsersController < ApplicationController
     redirect_to(denied_path) unless current_user?(@user)
   end
 
-  def get_signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_path, notice: "Please sign in"
-    end
-  end
+  #def get_signed_in_user
+  #  unless signed_in?
+  #    store_location
+  #    redirect_to signin_path, notice: "Please sign in"
+  #  end
+  #end
 end

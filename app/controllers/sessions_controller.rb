@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 		# if condition is true
 		if user && user.authenticate(params[:session][:password])
 			sign_in user
-			redirect_back_or user
+			redirect_back_or root_path
 		else
 			# flash only gets called on the first request.
 			# but render isnt a request, hence flash is called twice currently

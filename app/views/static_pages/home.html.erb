@@ -1,8 +1,25 @@
-<div class="center hero-unit">
-	<h1>Welcome to Sample App</h1>
-	<h2>Home page for sample app</h2>
+<% if signed_in? %>
+	<div class="row">
+		<aside class="col-md-4">
+			<section>
+				<%= render 'shared/user_info' %>
+			</section>
+			<section>
+				<%= render 'shared/micropost_form' %>
+			</section>
+		</aside>
+		<div class="col-md-8">
+			<h3 style="margin-left:40px">News Feed</h3>
+			<%= render 'shared/feed' %>
+		</div>
+	</div>
+<% else %>
+	<div class="center hero-unit">
+		<h1>Welcome to Sample App</h1>
+		<h2>Home page for sample app</h2>
 
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
 
-<%= link_to image_tag("itachi.png", alt: "Mangekyo"), 'http://naruto.wikia.com/wiki/Mangeky%C5%8D_Sharingan', target: "_blank" %>
+	<%= link_to image_tag("itachi.png", alt: "Mangekyo"), 'http://naruto.wikia.com/wiki/Mangeky%C5%8D_Sharingan', target: "_blank" %>
+<% end %>
