@@ -1,6 +1,8 @@
 # Sample App
 
-Developed to learn rails from the ruby on rails tutorial book.
+A very tiny twitter clone.
+
+Developed to learn rails from the book "Ruby on Rails".
 
 (The app is still under construction...)
 
